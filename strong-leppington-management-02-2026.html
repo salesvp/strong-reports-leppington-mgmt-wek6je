@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRONG Pilates Leppington - Sales Report Dec 2025 – Feb 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+<style>
+/* KESSEL_FONT_PLACEHOLDER */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --sky: #87CEEB;
+  --sky-light: #E6F7FF;
+  --gray-light: #f5f5f5;
+  --gray-border: #e0e0e0;
+  --success: #2ecc71;
+  --warning-acc: #f59e0b;
+  --danger-acc: #ef4444;
+  --topbar-h: 52px;
+  --secbar-h: 36px;
+  --transition: 0.2s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;background:var(--gray-light);color:var(--black);font-size:13px;line-height:1.6;margin:0;padding:0;}
+#page-wrap{padding-top:calc(var(--topbar-h) + var(--secbar-h));}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--topbar-h);background:var(--black);border-bottom:1px solid #1a1a1a;display:flex;align-items:center;padding:0 20px 0 24px;z-index:1000;gap:0;}
+.tb-wordmark{font-family:'Kessel Heavy','Arial Black',sans-serif;font-size:22px;color:var(--sky);letter-spacing:3px;line-height:1;white-space:nowrap;text-decoration:none;flex-shrink:0;}
+.tb-doc-name{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;white-space:nowrap;flex-shrink:0;margin-left:12px;}
+.tb-pills{display:flex;gap:6px;align-items:center;margin-left:auto;flex-shrink:0;}
+.tb-pill{padding:4px 10px;border-radius:20px;border:1px solid #2a2a2a;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#666;}
+.tb-pill.hi{border-color:rgba(135,206,235,0.3);color:var(--sky);background:rgba(135,206,235,0.07);}
+.tb-cog{width:30px;height:30px;flex-shrink:0;background:none;border:1px solid #2a2a2a;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--transition);}
+.tb-cog svg{width:13px;height:13px;color:#666;}
+.tb-cog:hover,.tb-cog.active{border-color:var(--sky);background:rgba(135,206,235,0.1);}
+.tb-cog:hover svg,.tb-cog.active svg{color:var(--sky);}
+
+/* SECBAR */
+.secbar{position:fixed;top:var(--topbar-h);left:0;right:0;height:var(--secbar-h);background:var(--black);border-bottom:2px solid var(--sky);display:flex;align-items:stretch;z-index:990;}
+.sec-link{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#666;transition:all var(--transition);border-right:1px solid #111;}
+.sec-link:last-child{border-right:none;}
+.sec-link:hover{color:var(--sky);background:rgba(135,206,235,0.05);}
+.sec-link.active{color:var(--sky);background:rgba(135,206,235,0.08);}
+.sec-num{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:rgba(135,206,235,0.15);font-size:8px;font-weight:700;color:var(--sky);flex-shrink:0;}
+.sec-link.active .sec-num{background:var(--sky);color:var(--black);}
+
+/* PAGE HEADER */
+.page-header{background:#000;padding:36px 48px 32px;border-bottom:3px solid #87CEEB;}
+.page-header-inner{max-width:1200px;margin:0 auto;}
+.crumb{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#666666;margin-bottom:8px;}
+.crumb span{color:#87CEEB;}
+.page-header h1{font-family:'Kessel Heavy','Arial Black',sans-serif;font-size:42px;letter-spacing:6px;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:16px;margin-top:0;}
+.meta-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.meta-pill{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#87CEEB;border:1px solid rgba(135,206,235,0.4);padding:3px 10px;border-radius:20px;}
+
+/* CONTENT AREA */
+.content-area{max-width:1200px;margin:0 auto;padding:36px 48px 80px;}
+
+/* SECTION CARDS */
+.section-card{background:#fff;border:1px solid #e0e0e0;border-radius:2px;margin-bottom:12px;overflow:hidden;}
+.section-card-header{background:#000;padding:14px 20px;border-bottom:2px solid #87CEEB;display:flex;align-items:center;justify-content:space-between;}
+.section-num-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#87CEEB;margin-bottom:5px;}
+.section-title{font-family:'Kessel Heavy','Arial Black',sans-serif;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;line-height:1;}
+.section-title em{font-style:normal;color:#87CEEB;}
+.section-card-body{padding:18px 20px;}
+.section-gap{height:28px;}
+
+/* METRIC CARDS */
+.metric-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px;}
+.metric-strip.three{grid-template-columns:repeat(3,1fr);}
+.m-card{background:#000;border-radius:2px;padding:20px 18px;border-bottom:3px solid #87CEEB;}
+.m-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-bottom:8px;}
+.m-val{font-family:'Kessel Heavy','Arial Black',sans-serif;font-size:28px;color:#87CEEB;letter-spacing:2px;line-height:1;}
+.m-val.pos{color:#2ecc71;}
+.m-val.warn{color:#f59e0b;}
+.m-val.neg{color:#ef4444;}
+.m-sub{font-size:10px;color:#aaa;margin-top:6px;}
+
+/* INNER CARDS */
+.card{background:#fff;border:1px solid #e0e0e0;border-radius:2px;margin-bottom:12px;}
+.card-head{background:#000;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;}
+.card-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#87CEEB;}
+.card-body{padding:16px;}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table th{background:#000;color:#fff;padding:9px 12px;text-align:left;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.data-table td{padding:9px 12px;border-bottom:1px solid #f0f0f0;color:#333;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr.total td{font-weight:700;background:#f5f5f5;border-top:2px solid #000;}
+
+/* TAKEAWAYS */
+.takeaways{background:#f8f9fa;border:1px solid #e0e0e0;border-left:3px solid #87CEEB;border-radius:2px;padding:16px 18px;margin-top:12px;}
+.takeaways-title{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#000;margin-bottom:10px;}
+.takeaways ul{list-style:none;padding:0;margin:0;}
+.takeaways li{font-size:13px;color:#333;line-height:1.65;padding:5px 0 5px 16px;position:relative;border-bottom:1px solid #eee;}
+.takeaways li:last-child{border-bottom:none;}
+.takeaways li::before{content:">";color:#87CEEB;position:absolute;left:0;top:6px;font-size:10px;}
+
+/* INSIGHT TEXT */
+.insight-text{font-size:14px;line-height:1.75;color:#333;margin-bottom:12px;}
+.insight-text p{margin-bottom:12px;margin-top:0;}
+
+/* EXEC SECTIONS */
+.exec-section{background:#fff;border:1px solid #e0e0e0;border-radius:2px;padding:18px 20px;margin-bottom:12px;}
+.exec-section-title{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#000;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #87CEEB;}
+.exec-list{list-style:none;padding:0;margin:0;}
+.exec-list li{font-size:13px;color:#333;line-height:1.65;padding:5px 0 5px 14px;position:relative;border-bottom:1px solid #e0e0e0;}
+.exec-list li:last-child{border-bottom:none;}
+.exec-list li::before{content:">";color:#87CEEB;position:absolute;left:0;top:6px;font-size:10px;}
+.exec-list li strong{color:#000;font-weight:700;}
+
+/* LAYOUT */
+.two-col{display:flex;gap:12px;margin-bottom:12px;align-items:stretch;}
+.two-col .card{flex:1;display:flex;flex-direction:column;}
+.two-col .card .card-body{flex:1;display:flex;flex-direction:column;}
+.two-col .card .card-body .chart-canvas-wrap{flex:1;height:auto;min-height:180px;}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
+
+/* CHART WRAPPERS */
+.chart-canvas-wrap{position:relative;height:220px;width:100%;display:block;}
+.chart-canvas-wrap canvas{position:absolute;top:0;left:0;width:100%!important;height:100%!important;}
+
+/* BTT */
+.btt{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:#000;border:1px solid #87CEEB;color:#87CEEB;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:16px;opacity:0;transition:opacity 0.3s;z-index:500;border-radius:2px;}
+.btt.visible{opacity:1;}
+
+/* WIDTH TOGGLE */
+.width-toggle{position:fixed;bottom:70px;right:24px;width:40px;height:40px;background:var(--black);border:1px solid var(--sky);border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;transition:all var(--transition);}
+.width-toggle:hover{border-color:var(--sky);}
+.width-toggle svg{width:14px;height:14px;color:var(--sky);}
+.width-toggle.fw{border-color:#333;}
+.width-toggle.fw svg{color:#666;}
+
+/* EDIT MODE */
+.edit-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:2000;align-items:center;justify-content:center;backdrop-filter:blur(3px);}
+.edit-overlay.active{display:flex;}
+.edit-modal{background:var(--black);border:1px solid #2a2a2a;border-top:3px solid var(--sky);border-radius:2px;width:600px;max-width:94vw;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;}
+.modal-head{padding:16px 20px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.modal-head-title{font-family:'Kessel Heavy',sans-serif;font-size:14px;letter-spacing:2px;color:var(--sky);text-transform:uppercase;}
+.modal-section-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;}
+.modal-close{width:28px;height:28px;background:none;border:1px solid #333;border-radius:2px;color:#666;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition);flex-shrink:0;}
+.modal-close:hover{border-color:var(--sky);color:var(--sky);}
+.modal-body{padding:20px;overflow-y:auto;flex:1;}
+.modal-field{margin-bottom:16px;}.modal-field:last-child{margin-bottom:0;}
+.field-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:6px;display:block;}
+.field-input{width:100%;background:#111;border:1px solid #2a2a2a;border-radius:2px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;line-height:1.6;padding:10px 12px;resize:vertical;transition:border-color var(--transition);}
+.field-input:focus{outline:none;border-color:var(--sky);}
+.bullet-list-editor{display:flex;flex-direction:column;gap:6px;}
+.bullet-row{display:flex;gap:6px;align-items:flex-start;}
+.bullet-input{flex:1;background:#111;border:1px solid #2a2a2a;border-radius:2px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:13px;line-height:1.6;padding:8px 10px;resize:vertical;transition:border-color var(--transition);}
+.bullet-input:focus{outline:none;border-color:var(--sky);}
+.bullet-remove{width:28px;height:34px;flex-shrink:0;background:none;border:1px solid #2a2a2a;border-radius:2px;color:#555;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition);font-size:16px;margin-top:1px;}
+.bullet-remove:hover{border-color:var(--danger-acc);color:var(--danger-acc);}
+.add-bullet-btn{background:none;border:1px dashed #333;border-radius:2px;color:#555;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:7px;cursor:pointer;transition:all var(--transition);width:100%;}
+.add-bullet-btn:hover{border-color:var(--sky);color:var(--sky);}
+.modal-foot{padding:14px 20px;border-top:1px solid #1a1a1a;display:flex;gap:8px;justify-content:flex-end;flex-shrink:0;}
+.btn{padding:8px 18px;border-radius:2px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all var(--transition);border:1px solid transparent;}
+.btn-cancel{background:none;border-color:#333;color:#666;}.btn-cancel:hover{border-color:#555;color:#aaa;}
+.btn-save{background:var(--sky);border-color:var(--sky);color:var(--black);transition:all var(--transition);}.btn-save:hover{background:#6bb8d4;border-color:#6bb8d4;}
+.btn-save.pending{background:var(--warning-acc);border-color:var(--warning-acc);color:var(--black);}.btn-save.pending:hover{background:#e08c00;border-color:#e08c00;}
+.btn-export{background:none;border-color:rgba(135,206,235,0.3);color:var(--sky);margin-right:auto;}.btn-export:hover{background:rgba(135,206,235,0.07);}
+.pw-gate{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:3000;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.pw-gate.active{display:flex;}
+.pw-box{background:var(--black);border:1px solid #2a2a2a;border-top:3px solid var(--sky);border-radius:2px;padding:32px;width:360px;max-width:94vw;text-align:center;}
+.pw-title{font-family:'Kessel Heavy',sans-serif;font-size:16px;letter-spacing:3px;color:var(--sky);text-transform:uppercase;margin-bottom:8px;}
+.pw-sub{font-size:11px;color:#555;letter-spacing:1px;margin-bottom:24px;}
+.pw-input{width:100%;background:#111;border:1px solid #2a2a2a;border-radius:2px;color:var(--white);font-family:'Montserrat',sans-serif;font-size:14px;padding:11px 14px;text-align:center;letter-spacing:3px;margin-bottom:12px;transition:border-color var(--transition);}
+.pw-input:focus{outline:none;border-color:var(--sky);}
+.pw-error{font-size:11px;color:var(--danger-acc);margin-bottom:12px;min-height:16px;}
+.pw-submit{width:100%;background:var(--sky);border:none;border-radius:2px;color:var(--black);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:11px;cursor:pointer;transition:all var(--transition);}
+.pw-submit:hover{background:#6bb8d4;}
+.pw-cancel{width:100%;background:none;border:1px solid #2a2a2a;border-radius:2px;color:#555;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:9px;cursor:pointer;margin-top:8px;transition:all var(--transition);}
+.pw-cancel:hover{border-color:#555;color:#888;}
+.edit-trigger{display:none;width:24px;height:24px;flex-shrink:0;background:rgba(135,206,235,0.08);border:1px solid rgba(135,206,235,0.2);border-radius:2px;cursor:pointer;align-items:center;justify-content:center;transition:all var(--transition);}
+.edit-trigger:hover{background:rgba(135,206,235,0.18);border-color:var(--sky);}
+.edit-trigger svg{width:11px;height:11px;color:var(--sky);}
+body.edit-mode .edit-trigger{display:flex;}
+body.edit-mode .section-card{outline:1px dashed rgba(135,206,235,0.15);}
+.edit-banner{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--sky);color:var(--black);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:20px;z-index:700;white-space:nowrap;}
+body.edit-mode .edit-banner{display:block;}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .page-header { padding: 28px 20px 24px; }
+  .page-header h1 { font-size: 26px; letter-spacing: 3px; }
+  .content-area { padding: 20px 16px 60px; }
+  .metric-strip { grid-template-columns: 1fr !important; gap: 8px; }
+  .metric-strip.three { grid-template-columns: 1fr !important; }
+  .m-card { padding: 14px 12px; }
+  .m-val { font-size: 22px; }
+  .section-card-body { padding: 14px 14px; }
+  .section-card-header { padding: 12px 14px; }
+  .section-title { font-size: 16px; letter-spacing: 2px; }
+  .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table th, .data-table td { font-size: 11px; padding: 7px 8px; }
+  .tb-cog { display: none; }
+  .tb-doc-name { display: none; }
+  .secbar { display: none; }
+  #page-wrap { padding-top: 52px; }
+  .two-col { flex-direction: column; }
+  .two-col .card { flex: none; width: 100%; }
+  .three-col { grid-template-columns: 1fr !important; }
+  .chart-canvas-wrap { min-height: 220px; }
+  .exec-section { padding: 14px 14px; }
+}
+@media (max-width: 400px) {
+  .page-header h1 { font-size: 22px; letter-spacing: 2px; }
+}
+/* LANDSCAPE FONT FIX */
+@media (max-width: 1024px) {
+  .insight-text { font-size: 12px; line-height: 1.6; }
+  .insight-text p { margin-bottom: 8px; }
+  .exec-list li { font-size: 12px; line-height: 1.5; }
+  .takeaways li { font-size: 12px; }
+  .section-card-body p { font-size: 12px; line-height: 1.6; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div class="pw-gate" id="pwGate"><div class="pw-box"><div class="pw-title">Edit Mode</div><div class="pw-sub">Enter password to unlock</div><input class="pw-input" id="pwInput" type="password" placeholder="••••••••" autocomplete="off"><div class="pw-error" id="pwError"></div><button class="pw-submit" id="pwSubmit">Unlock</button><button class="pw-cancel" id="pwCancel">Cancel</button></div></div>
+
+<!-- EDIT MODAL -->
+<div class="edit-overlay" id="editOverlay"><div class="edit-modal" id="editModal"><div class="modal-head"><div><div class="modal-section-label" id="modalSectionLabel"></div><div class="modal-head-title" id="modalTitle"></div></div><button class="modal-close" id="modalClose">✕</button></div><div class="modal-body" id="modalBody"></div><div id="discardGate" style="display:none;padding:12px 20px;background:#1a0d00;border-top:1px solid rgba(249,115,22,0.3);flex-shrink:0;"><div style="font-size:11px;color:#f97316;font-weight:700;margin-bottom:8px;">You have unsaved changes.</div><div style="display:flex;gap:8px;"><button class="btn btn-cancel" style="color:#ef4444;border-color:rgba(239,68,68,0.3);font-size:10px;padding:5px 12px;" onclick="discardAndClose()">Discard changes</button><button class="btn btn-cancel" style="font-size:10px;padding:5px 12px;" onclick="hideDiscardGate()">Go back to save</button></div></div><div class="modal-foot"><button class="btn btn-export" id="btnExport">↓ Export HTML</button><button class="btn btn-cancel" id="btnCancel">Cancel</button><button class="btn btn-save" id="btnSave">Save Changes</button></div></div></div>
+
+<!-- EDIT BANNER -->
+<div class="edit-banner">Edit Mode Active — click ✏ icons to edit sections</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a class="tb-wordmark" href="#">STRONG</a>
+  <span class="tb-doc-name">SALES REPORT</span>
+  <div class="tb-pills">
+    <span class="tb-pill hi">Leppington</span>
+    <button class="tb-cog" id="editToggleBtn" onclick="triggerEditMode()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+  </div>
+</div>
+
+<!-- SECTION BAR -->
+<nav class="secbar">
+  <a class="sec-link active" href="#s01"><span class="sec-num">01</span>Executive Summary</a>
+  <a class="sec-link" href="#s02"><span class="sec-num">02</span>Client Activity</a>
+  <a class="sec-link" href="#s03"><span class="sec-num">03</span>Studio Financials</a>
+  <a class="sec-link" href="#s04"><span class="sec-num">04</span>Session Attendance</a>
+  <a class="sec-link" href="#s05"><span class="sec-num">05</span>Sales &amp; Performance</a>
+  <a class="sec-link" href="#s06"><span class="sec-num">06</span>Summary</a>
+</nav>
+
+<div id="page-wrap">
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="crumb">STRONG Pilates <span>/ Sales Report</span></div>
+    <h1>Leppington</h1>
+    <div class="meta-pills">
+      <span class="meta-pill">February 2026</span>
+      <span class="meta-pill">Rolling Quarter</span>
+      <span class="meta-pill">Dec 2025 – Feb 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="content-area">
+
+<!-- ===================== S01 EXECUTIVE SUMMARY ===================== -->
+<span class="section-anchor" id="s01" style="display:block;height:0;"></span>
+<div class="section-gap"></div>
+<div class="section-card">
+  <div class="section-card-header">
+    <div>
+      <div class="section-num-label">01</div>
+      <div class="section-title">Executive <em>Summary</em></div>
+    </div>
+    <button class="edit-trigger" onclick="openEditModal('exec-issues','Executive Summary','Key Issues')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="section-card-body">
+
+    <!-- ROW 1: CURRENT STATE -->
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-head"><span class="card-title">Current State</span></div>
+      <div class="card-body">
+        <div class="insight-text">
+          <p><strong>Membership:</strong> Leppington's membership base recorded a net gain of 3 members across the quarter (322 → 325), reversing the prior period's net loss of 7. The active rate fluctuated between 71.7% in December and 79.8% in January before settling at 76.3% in February, with attrition contained below the sub-7% target across all three months.</p>
+          <p><strong>Revenue:</strong> The studio generated $204,589 in gross revenue across the quarter, with January peaking at $75,738 before February closed at $63,436 — a 16.2% decline. Membership revenue dominated at 85.4%–90.1% monthly. Late cancel fees eased from $3,542 in January to $2,721 in February, a positive signal for improving attendance behaviour.</p>
+          <p><strong>Utilisation:</strong> Session attendance metrics improved consistently across the quarter, with February the first month to simultaneously achieve both booking utilisation (79.93%) and attendance utilisation (71.25%) within their respective target ranges. The booking-to-attendance gap held below 10% across all three months (8.17%–8.85%), indicating stable member follow-through on bookings.</p>
+          <p><strong>Sales vs Cancellations:</strong> Membership sales built from 11 in December to 28 in February — the strongest monthly result in six months — delivering net positive membership movement in both January (+3) and February (+7). January's 109 Starter Pass pipeline appears to have converted in February, with 56 intro offers sold and first visits holding at 76.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: THREE-COL -->
+    <div class="three-col">
+      <div class="exec-section">
+        <div class="exec-section-title">Key Issues</div>
+        <ul class="exec-list" data-field="exec-issues">
+          <li><strong>February revenue softness:</strong> Gross revenue declined 16.2% from January's $75,738 to $63,436, the softest month of the quarter requiring monitoring.</li>
+          <li><strong>Active rate pullback:</strong> February's active rate retreated to 76.3% as suspended members increased from 65 to 77, after January's strong 79.8% recovery.</li>
+          <li><strong>Attendance utilisation sustainability:</strong> February hit the 70–75% target (71.25%) for the first time — sustaining this into March is the key test.</li>
+          <li><strong>Average revenue per visit decline:</strong> Revenue per visit fell from $22.78 in January to $18.52 in February, with intro offer mix driving the lower per-visit rate.</li>
+          <li><strong>Attrition creep:</strong> February's 6.56% attrition, while below sub-7% target, represents a gradual uptick from December's 4.79% requiring continued retention focus.</li>
+        </ul>
+      </div>
+      <div class="exec-section">
+        <div class="exec-section-title">Active Interventions Being Deployed</div>
+        <ul class="exec-list" data-field="exec-interventions">
+          <li><strong>FOH Weekly Schedule adherence:</strong> FOH team currently aligning fully with scheduled task framework, ensuring consistent daily execution across all sales and member engagement touchpoints.</li>
+          <li><strong>Sales pipeline currency:</strong> Active focus on bringing the full sales pipeline completely up to date by end of March, ensuring no leads or follow-ups fall through.</li>
+          <li><strong>Social media execution:</strong> All studio socials being executed as per established guidelines, supporting lead generation and community engagement heading into the next quarter.</li>
+          <li><strong>Recovr retention software:</strong> Systematic retention and member engagement tracking supporting attrition management and follow-up on at-risk members.</li>
+          <li><strong>Operational alignment programme:</strong> Next quarter focus on full studio-level alignment across FOH, socials, event planning, and LAM — all milestones pre-planned ahead of July slow-down period.</li>
+        </ul>
+      </div>
+      <div class="exec-section" style="margin-bottom:0;">
+        <div class="exec-section-title">Expected Outcomes</div>
+        <ul class="exec-list" data-field="exec-outcomes">
+          <li><strong>Sustain utilisation gains:</strong> Maintain February's booking (79.93%) and attendance (71.25%) utilisation within target ranges through consistent member engagement and FOH execution.</li>
+          <li><strong>Stabilise revenue:</strong> Support recovery from February's $63,436 toward January's $75,738 baseline through membership growth and pipeline conversion activity.</li>
+          <li><strong>Contain attrition:</strong> Hold attrition below sub-7% target and work toward sub-6% to ensure membership sales consistently deliver net positive growth.</li>
+          <li><strong>Build operational foundation:</strong> Full FOH, socials, event planning, and LAM alignment ahead of July slow-down period, building past prior year's growth trajectory.</li>
+          <li><strong>Pipeline currency:</strong> Complete sales pipeline update by month end, ensuring all leads and conversion opportunities are actively managed heading into Q2.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== S02 CLIENT ACTIVITY ===================== -->
+<span class="section-anchor" id="s02" style="display:block;height:0;"></span>
+<div class="section-gap"></div>
+<div class="section-card">
+  <div class="section-card-header">
+    <div>
+      <div class="section-num-label">02</div>
+      <div class="section-title">Client <em>Activity</em></div>
+    </div>
+    <button class="edit-trigger" onclick="openEditModal('mem-insight','Client Activity','Insight Text')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="section-card-body">
+
+    <!-- METRICS -->
+    <div class="metric-strip">
+      <div class="m-card">
+        <div class="m-lbl">Total Members</div>
+        <div class="m-val">325</div>
+        <div class="m-sub">vs 322 prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Active Members</div>
+        <div class="m-val warn">248</div>
+        <div class="m-sub">76.3% active rate</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Suspended Members</div>
+        <div class="m-val">77</div>
+        <div class="m-sub">23.7% suspended rate</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Attrition Rate</div>
+        <div class="m-val warn">6.56%</div>
+        <div class="m-sub">vs 5.83% prior month</div>
+      </div>
+    </div>
+
+    <!-- CHART + INSIGHT -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-head"><span class="card-title">Membership Status Trend</span></div>
+        <div class="card-body">
+          <div class="chart-canvas-wrap"><canvas id="chartMembership"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Insight</span></div>
+        <div class="card-body">
+          <div class="insight-text" data-field="mem-insight">
+            <p data-field="mem-insight-p1">Leppington's membership base recorded a net gain of 3 members across the quarter, moving from 322 in December to 325 in February — reversing the prior period's net loss of 7 members. Total membership held stable across all three months (329 → 322 → 325), with December's figure reflecting holiday-period suspension carryover. The February close of 325 marks the highest total in three months.</p>
+            <p data-field="mem-insight-p2">The active rate peaked at 79.8% in January (257 active, 65 suspended) before settling at 76.3% in February (248 active, 77 suspended) as suspensions increased from 65 to 77. December's lower active rate of 71.7% reflected elevated holiday suspensions of 93 members, which unwound substantially through January. Attrition remained contained at 4.79% (Dec), 5.83% (Jan), and 6.56% (Feb) — all below the sub-7% target — though February's uptick warrants monitoring.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+      <div class="card-head"><span class="card-title">Membership Status Trend — Monthly Detail</span></div>
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Total Members</th><th>Active Members</th><th>Suspended Members</th><th>Active Rate %</th></tr></thead>
+          <tbody>
+            <tr><td>Dec 2025</td><td>329</td><td>236</td><td>93</td><td>71.7%</td></tr>
+            <tr><td>Jan 2026</td><td>322</td><td>257</td><td>65</td><td>79.8%</td></tr>
+            <tr><td>Feb 2026</td><td>325</td><td>248</td><td>77</td><td>76.3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAKEAWAYS -->
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul data-field="mem-takeaways">
+        <li>Membership base recorded a net gain of 3 members (322 → 325) across the quarter, reversing the prior period's net loss of 7 members</li>
+        <li>Active rate peaked at 79.8% in January before pulling back to 76.3% in February as suspended members increased from 65 to 77</li>
+        <li>December's 71.7% active rate reflected peak holiday suspensions (93 members), which substantially unwound through January</li>
+        <li>Attrition remained within acceptable range across all three months (4.79% → 5.83% → 6.56%), with February's uptick to 6.56% worth monitoring</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== S03 STUDIO FINANCIALS ===================== -->
+<span class="section-anchor" id="s03" style="display:block;height:0;"></span>
+<div class="section-gap"></div>
+<div class="section-card">
+  <div class="section-card-header">
+    <div>
+      <div class="section-num-label">03</div>
+      <div class="section-title">Studio <em>Financials</em></div>
+    </div>
+    <button class="edit-trigger" onclick="openEditModal('fin-insight','Studio Financials','Insight Text')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="section-card-body">
+
+    <!-- METRICS -->
+    <div class="metric-strip">
+      <div class="m-card">
+        <div class="m-lbl">Gross Revenue</div>
+        <div class="m-val neg">$63,436</div>
+        <div class="m-sub">vs $75,738 prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Membership Revenue</div>
+        <div class="m-val">$55,363</div>
+        <div class="m-sub">87.3% of gross</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Intro Offer Revenue</div>
+        <div class="m-val">$2,870</div>
+        <div class="m-sub">vs $5,921 prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Package Revenue</div>
+        <div class="m-val">$2,409</div>
+        <div class="m-sub">vs $1,554 prior month</div>
+      </div>
+    </div>
+
+    <!-- CHART + INSIGHT -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-head"><span class="card-title">Revenue by Stream</span></div>
+        <div class="card-body">
+          <div class="chart-canvas-wrap"><canvas id="chartRevenue"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Insight</span></div>
+        <div class="card-body">
+          <div class="insight-text" data-field="fin-insight">
+            <p data-field="fin-insight-p1">The studio generated $204,589 in gross revenue across the quarter, with January the peak at $75,738 before February closed at $63,436 — a 16.2% decline and the softest month of the three. December's $65,415 reflected holiday-period contraction carried from the prior quarter. Membership revenue remained dominant throughout, contributing 90.1% ($58,945) in December, 85.4% ($64,685) in January, and 87.3% ($55,363) in February.</p>
+            <p data-field="fin-insight-p2">Intro offer revenue tracked the Starter Pass cycle — rising from $1,264 in December to $5,921 in January as trial activity peaked, then normalising to $2,870 in February as the promotion concluded. Package revenue held stable across the quarter ($2,025 → $1,554 → $2,409). Late cancel fees totalled $9,235 ($2,972, $3,542, $2,721), with February's decrease a positive indicator of improving attendance behaviour. (Reduced late cancel fees indicate better member attendance, which drives long-term retention.)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+      <div class="card-head"><span class="card-title">Studio Financials — Monthly Detail</span></div>
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Gross Revenue</th><th>Memberships</th><th>Packages</th><th>Intro Offers</th><th>Fees</th><th>Other</th></tr></thead>
+          <tbody>
+            <tr><td>Dec 2025</td><td>$65,415</td><td>$58,945</td><td>$2,025</td><td>$1,264</td><td>$2,972</td><td>$209</td></tr>
+            <tr><td>Jan 2026</td><td>$75,738</td><td>$64,685</td><td>$1,554</td><td>$5,921</td><td>$3,542</td><td>$36</td></tr>
+            <tr><td>Feb 2026</td><td>$63,436</td><td>$55,363</td><td>$2,409</td><td>$2,870</td><td>$2,721</td><td>$0</td></tr>
+            <tr class="total"><td>Total</td><td>$204,589</td><td>$178,993</td><td>$5,988</td><td>$10,055</td><td>$9,235</td><td>$245</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAKEAWAYS -->
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul data-field="fin-takeaways">
+        <li>Quarter generated $204,589 in gross revenue, with January peaking at $75,738 before February declined 16.2% to $63,436</li>
+        <li>Membership revenue dominated across all three months at 85.4%–90.1%, providing a stable revenue baseline</li>
+        <li>Intro offer revenue tracked the Starter Pass cycle — peaking at $5,921 in January before normalising to $2,870 in February</li>
+        <li>Late cancel fees eased from $3,542 (January) to $2,721 (February), a positive signal for improving attendance behaviour</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== S04 SESSION ATTENDANCE ===================== -->
+<span class="section-anchor" id="s04" style="display:block;height:0;"></span>
+<div class="section-gap"></div>
+<div class="section-card">
+  <div class="section-card-header">
+    <div>
+      <div class="section-num-label">04</div>
+      <div class="section-title">Session <em>Attendance</em></div>
+    </div>
+    <button class="edit-trigger" onclick="openEditModal('att-insight','Session Attendance','Insight Text')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="section-card-body">
+
+    <!-- METRICS -->
+    <div class="metric-strip three">
+      <div class="m-card">
+        <div class="m-lbl">Booking Utilisation</div>
+        <div class="m-val pos">79.93%</div>
+        <div class="m-sub">vs 74.29% prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Attendance Utilisation</div>
+        <div class="m-val pos">71.25%</div>
+        <div class="m-sub">vs 65.44% prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Booking–Attendance Gap</div>
+        <div class="m-val pos">8.68%</div>
+        <div class="m-sub">below 10% threshold ✓</div>
+      </div>
+    </div>
+
+    <!-- CHART + INSIGHT -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-head"><span class="card-title">Utilisation Trend</span></div>
+        <div class="card-body">
+          <div class="chart-canvas-wrap"><canvas id="chartUtilisation"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Insight</span></div>
+        <div class="card-body">
+          <div class="insight-text" data-field="att-insight">
+            <p data-field="att-insight-p1">Session attendance improved consistently across the quarter, with February marking the first month to simultaneously achieve both booking utilisation (79.93%) and attendance utilisation (71.25%) within their respective target ranges — a meaningful step forward from December's 65.59% and 57.42%, well below both benchmarks. January served as the transition month, with booking at 74.29% and attendance at 65.44% before February delivered the breakthrough.</p>
+            <p data-field="att-insight-p2">The booking-to-attendance gap held below the 10% threshold across all three months (8.17%, 8.85%, 8.68%), indicating stable member follow-through on bookings throughout the period. Average revenue per visit declined from $22.63 in December to $18.52 in February — an 18.1% drop — likely reflecting the increased presence of intro offer participants attending at lower per-visit revenue. Sustaining February's attendance utilisation within the 70–75% healthy range into March is the immediate priority.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+      <div class="card-head"><span class="card-title">Session Attendance — Monthly Detail</span></div>
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Sessions</th><th>Booking Utilisation</th><th>Attendance Utilisation</th><th>Booking Capacity</th><th>Sessions Booked</th><th>Sessions Attended</th><th>Avg Rev/Visit</th></tr></thead>
+          <tbody>
+            <tr><td>Dec 2025</td><td>465</td><td>65.59%</td><td>57.42%</td><td>4,406</td><td>2,890</td><td>2,530</td><td>$22.63</td></tr>
+            <tr><td>Jan 2026</td><td>471</td><td>74.29%</td><td>65.44%</td><td>4,476</td><td>3,325</td><td>2,929</td><td>$22.78</td></tr>
+            <tr><td>Feb 2026</td><td>451</td><td>79.93%</td><td>71.25%</td><td>4,285</td><td>3,425</td><td>3,053</td><td>$18.52</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAKEAWAYS -->
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul data-field="att-takeaways">
+        <li>February achieved both booking (79.93%) and attendance (71.25%) utilisation within target ranges simultaneously for the first time, a meaningful step forward from December's 65.59% and 57.42%</li>
+        <li>The booking-to-attendance gap held below 10% across all three months (8.17% → 8.85% → 8.68%), indicating consistent member follow-through on bookings</li>
+        <li>Average revenue per visit declined from $22.63 (December) to $18.52 (February), likely reflecting increased intro offer participant activity at lower per-visit revenue</li>
+        <li>Prior period's persistent below-threshold attendance utilisation has been resolved in February — sustaining this into March is the immediate benchmark</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== S05 SALES & PERFORMANCE ===================== -->
+<span class="section-anchor" id="s05" style="display:block;height:0;"></span>
+<div class="section-gap"></div>
+<div class="section-card">
+  <div class="section-card-header">
+    <div>
+      <div class="section-num-label">05</div>
+      <div class="section-title">Sales &amp; <em>Performance</em></div>
+    </div>
+    <button class="edit-trigger" onclick="openEditModal('sales-insight','Sales &amp; Performance','Insight Text')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="section-card-body">
+
+    <!-- METRICS -->
+    <div class="metric-strip">
+      <div class="m-card">
+        <div class="m-lbl">Memberships Sold</div>
+        <div class="m-val pos">28</div>
+        <div class="m-sub">vs 22 prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Intro Offers Sold</div>
+        <div class="m-val warn">56</div>
+        <div class="m-sub">vs 55 same month prior year</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">Attrition Rate</div>
+        <div class="m-val warn">6.56%</div>
+        <div class="m-sub">vs 5.83% prior month</div>
+      </div>
+      <div class="m-card">
+        <div class="m-lbl">First Visits</div>
+        <div class="m-val warn">76</div>
+        <div class="m-sub">vs 93 same month prior year</div>
+      </div>
+    </div>
+
+    <!-- TWO-COL CHARTS -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-head"><span class="card-title">Sales vs Cancellations</span></div>
+        <div class="card-body">
+          <div class="chart-canvas-wrap"><canvas id="chartSalesCanc"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Attrition Rate</span></div>
+        <div class="card-body">
+          <div class="chart-canvas-wrap"><canvas id="chartAttrition"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALES PERFORMANCE FULL WIDTH -->
+    <div class="card">
+      <div class="card-head"><span class="card-title">Sales Performance — All Products</span></div>
+      <div class="card-body">
+        <div class="chart-canvas-wrap" style="height:240px;"><canvas id="chartSalesPerf"></canvas></div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+      <div class="card-head"><span class="card-title">Sales &amp; Performance — Monthly Detail</span></div>
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead><tr><th>Month</th><th>Memberships Sold</th><th>Intro Offers Sold</th><th>Packs Sold</th><th>Cancelled Members</th><th>Attrition Rate</th><th>First Visits</th></tr></thead>
+          <tbody>
+            <tr><td>Dec 2025</td><td>11</td><td>23</td><td>37</td><td>16</td><td>4.79%</td><td>47</td></tr>
+            <tr><td>Jan 2026</td><td>22</td><td>109</td><td>35</td><td>19</td><td>5.83%</td><td>84</td></tr>
+            <tr><td>Feb 2026</td><td>28</td><td>56</td><td>46</td><td>21</td><td>6.56%</td><td>76</td></tr>
+            <tr class="total"><td>Total</td><td>61</td><td>188</td><td>118</td><td>56</td><td>—</td><td>207</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INSIGHT -->
+    <div class="card">
+      <div class="card-head"><span class="card-title">Insight</span></div>
+      <div class="card-body">
+        <div class="insight-text" data-field="sales-insight">
+          <p data-field="sales-insight-p1">Sales performance strengthened notably across the quarter, with membership sales building from 11 in December to 22 in January and 28 in February — the highest monthly total across both the prior and current periods. February's 28 sales against 21 cancellations delivered a net gain of +7 members, continuing January's return to net positive territory (+3) after December's net loss of 5. January's 109 Starter Pass pipeline appears to have materialised in February.</p>
+          <p data-field="sales-insight-p2">Intro offer sales normalised from January's promotion-driven peak of 109 to 56 in February, with first visits tracking the same arc (47 → 84 → 76) — indicating the lead pipeline remains active heading into March. Attrition held within range across all three months (4.79% → 5.83% → 6.56%), with February's 6.56% remaining below the sub-7% target despite the slight uptick noted in the membership section.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKEAWAYS -->
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul data-field="sales-takeaways">
+        <li>Membership sales built consistently from 11 (December) to 22 (January) to 28 (February), with February's result the strongest single month across both the prior and current reporting periods</li>
+        <li>Net membership movement turned positive in January (+3) and strengthened in February (+7), reversing December's net loss of 5</li>
+        <li>January's 109 Starter Pass pipeline appears to have converted in February, with 28 memberships sold representing the highest monthly total in six months</li>
+        <li>Attrition held below sub-7% target across all three months (4.79% → 5.83% → 6.56%), with February's slight uptick worth monitoring but not yet a concern</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== S06 SUMMARY ===================== -->
+<span class="section-anchor" id="s06" style="display:block;height:0;"></span>
+<div class="section-gap"></div>
+<div class="section-card">
+  <div class="section-card-header">
+    <div>
+      <div class="section-num-label">06</div>
+      <div class="section-title">Summary &amp; <em>Path Forward</em></div>
+    </div>
+    <button class="edit-trigger" onclick="openEditModal('summary-insight','Summary & Path Forward','Insight Text')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+  </div>
+  <div class="section-card-body">
+
+    <div class="card">
+      <div class="card-head"><span class="card-title">Insight</span></div>
+      <div class="card-body">
+        <div class="insight-text" data-field="summary-insight">
+          <p data-field="summary-insight-p1">Leppington closed the December–February quarter on an improving trajectory. Membership returned to net positive growth (322 → 325), February delivered both utilisation targets for the first time, and membership sales reached their strongest monthly result in six months at 28 units. Revenue softened in February to $63,436, though this occurred against a backdrop of strengthening membership fundamentals, easing late cancel fees, and the booking-to-attendance gap holding consistently below 10%.</p>
+          <p data-field="summary-insight-p2">The next quarter's focus is full operational alignment across FOH, socials, event planning, and LAM — building past the prior year's growth ahead of the July slow-down. The FOH team is working through complete adherence to the Weekly Schedule, the sales pipeline is being brought fully up to date, and social media is executing per established guidelines. Sustaining February's utilisation and membership sales gains will be the defining measure of the quarter ahead.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKEAWAYS -->
+    <div class="takeaways">
+      <div class="takeaways-title">Key Takeaways</div>
+      <ul data-field="summary-takeaways">
+        <li>Quarter closed on an improving trajectory — net membership gain of 3, February's strongest membership sales in six months, and first simultaneous achievement of both utilisation targets</li>
+        <li>Revenue softened in February ($63,436) but occurred alongside strengthening membership fundamentals and improving attendance behaviour</li>
+        <li>Next quarter focus centres on full operational alignment across FOH, socials, event planning, and LAM to build past prior year's growth ahead of the July slow-down</li>
+        <li>FOH Weekly Schedule adherence, pipeline currency, and social media execution are the active operational priorities as of early March</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end content-area -->
+</div><!-- end page-wrap -->
+
+<a class="btt" id="btt" href="#page-wrap">↑</a>
+<button class="width-toggle" id="widthToggle" title="Toggle fixed/full width">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M5 5l-3 3 3 3M11 5l3 3-3 3"/></svg>
+</button>
+
+<script>
+try { Chart.register(ChartDataLabels); } catch(e) {}
+Chart.defaults.font.family = 'Montserrat';
+Chart.defaults.font.size = 11;
+
+var C_SKY = '#87CEEB'; var C_BLACK = '#000000'; var C_WHITE = '#ffffff';
+var C_GRID = 'rgba(0,0,0,0.07)'; var C_TICK = '#888';
+var C_SKYALPHA = 'rgba(135,206,235,0.15)';
+
+var lightScales = {
+  y: { grid:{color:C_GRID}, ticks:{color:C_TICK,font:{size:10}}, border:{dash:[3,3]} },
+  x: { grid:{color:C_GRID}, ticks:{color:C_TICK,font:{size:10}}, border:{dash:[3,3]} }
+};
+var legendLight = { position:'top', labels:{color:'#444',font:{size:10},boxWidth:10,padding:12} };
+
+var pillLabel = {
+  display:true, color:'#000', font:{size:(window.innerWidth<1024?7:10),weight:'700',family:'Montserrat'},
+  backgroundColor:'rgba(255,255,255,0.92)', borderRadius:3,
+  padding:(window.innerWidth<1024)?{top:1,bottom:1,left:2,right:2}:{top:2,bottom:2,left:5,right:5}, borderWidth:1, borderColor:'rgba(0,0,0,0.08)'
+};
+
+var LABELS = ['Dec 2025','Jan 2026','Feb 2026'];
+
+// CHART 1: MEMBERSHIP STATUS TREND
+new Chart(document.getElementById('chartMembership'), {
+  type: 'line',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label:'Total Members', data:[329,322,325], borderColor:C_BLACK, backgroundColor:'rgba(0,0,0,0.04)', pointBackgroundColor:C_BLACK, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'top'; }, anchor:'center', offset:8 }
+      },
+      { label:'Active Members', data:[236,257,248], borderColor:C_SKY, backgroundColor:C_SKYALPHA, pointBackgroundColor:C_SKY, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'bottom'; }, anchor:'center', offset:8 }
+      },
+      { label:'Suspended Members', data:[93,65,77], borderColor:'#ccc', borderDash:[4,3], fill:false, pointBackgroundColor:'#bbb', pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'bottom'; }, anchor:'center', offset:8 }
+      }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    layout:{padding:{top:28,left:8,right:36,bottom:16}},
+    plugins:{ legend:legendLight },
+    scales:{ y:{ ...lightScales.y, min:0, max:400 }, x:{ ...lightScales.x } }
+  }
+});
+
+// CHART 2: REVENUE BY STREAM
+new Chart(document.getElementById('chartRevenue'), {
+  type: 'bar',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label:'Memberships', data:[58945,64685,55363], backgroundColor:C_SKY, borderRadius:2,
+        datalabels:{ display:true, align:'end', anchor:'end', offset:1, clamp:true, color:'#000', font:{size:(window.innerWidth<1024?7:9),weight:'700',family:'Montserrat'}, backgroundColor:'rgba(255,255,255,0.92)', borderRadius:3, padding:{top:2,bottom:2,left:4,right:4}, borderWidth:1, borderColor:'rgba(0,0,0,0.08)', formatter:function(v){ return '$'+(v/1000).toFixed(1)+'k'; } }
+      },
+      { label:'Packages', data:[2025,1554,2409], backgroundColor:'#ddd', borderRadius:2,
+        datalabels:{ display:true, align:'end', anchor:'end', offset:1, clamp:true, color:'#000', font:{size:(window.innerWidth<1024?7:9),weight:'700',family:'Montserrat'}, backgroundColor:'rgba(255,255,255,0.92)', borderRadius:3, padding:{top:2,bottom:2,left:4,right:4}, borderWidth:1, borderColor:'rgba(0,0,0,0.08)', formatter:function(v){ return '$'+(v/1000).toFixed(1)+'k'; } }
+      },
+      { label:'Intro Offers', data:[1264,5921,2870], backgroundColor:C_BLACK, borderRadius:2,
+        datalabels:{ display:true, align:'end', anchor:'end', offset:1, clamp:true, color:'#fff', font:{size:(window.innerWidth<1024?7:9),weight:'700',family:'Montserrat'}, backgroundColor:'rgba(0,0,0,0.7)', borderRadius:3, padding:{top:2,bottom:2,left:4,right:4}, borderWidth:0, formatter:function(v){ return '$'+(v/1000).toFixed(1)+'k'; } }
+      }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    layout:{padding:{top:40,left:8,right:16,bottom:8}},
+    plugins:{ legend:legendLight },
+    scales:{
+      y:{ ...lightScales.y, max:80000, ticks:{ ...lightScales.y.ticks, callback:function(v){ return '$'+(v/1000).toFixed(0)+'k'; } } },
+      x:{ ...lightScales.x }
+    }
+  }
+});
+
+// CHART 3: UTILISATION TREND
+new Chart(document.getElementById('chartUtilisation'), {
+  type: 'line',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label:'Booking Utilisation', data:[65.59,74.29,79.93], borderColor:C_BLACK, backgroundColor:'rgba(0,0,0,0.04)', pointBackgroundColor:C_BLACK, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, formatter:function(v){ return v+'%'; }, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'top'; }, anchor:'center', offset:8 }
+      },
+      { label:'Attendance Utilisation', data:[57.42,65.44,71.25], borderColor:C_SKY, backgroundColor:C_SKYALPHA, pointBackgroundColor:C_SKY, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, formatter:function(v){ return v+'%'; }, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'bottom'; }, anchor:'center', offset:8 }
+      },
+      { label:'Target (75%)', data:[75,75,75], borderColor:C_SKY, borderDash:[5,4], pointRadius:0, borderWidth:1.5, fill:false, datalabels:{display:false} }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    layout:{padding:{top:28,left:8,right:36,bottom:16}},
+    plugins:{ legend:legendLight },
+    scales:{
+      y:{ ...lightScales.y, min:45, max:90, ticks:{ ...lightScales.y.ticks, callback:function(v){ return v+'%'; } } },
+      x:{ ...lightScales.x }
+    }
+  }
+});
+
+// CHART 4: SALES VS CANCELLATIONS
+new Chart(document.getElementById('chartSalesCanc'), {
+  type: 'bar',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label:'Memberships Sold', data:[11,22,28], backgroundColor:C_SKY, borderRadius:2,
+        datalabels:{ display:true, align:'end', anchor:'end', offset:1, clamp:true, color:'#000', font:{size:(window.innerWidth<1024?7:9),weight:'700',family:'Montserrat'}, backgroundColor:'rgba(255,255,255,0.92)', borderRadius:3, padding:{top:2,bottom:2,left:4,right:4}, borderWidth:1, borderColor:'rgba(0,0,0,0.08)' }
+      },
+      { label:'Cancelled', data:[16,19,21], backgroundColor:C_BLACK, borderRadius:2,
+        datalabels:{ display:true, align:'end', anchor:'end', offset:1, clamp:true, color:'#fff', font:{size:(window.innerWidth<1024?7:9),weight:'700',family:'Montserrat'}, backgroundColor:'rgba(0,0,0,0.7)', borderRadius:3, padding:{top:2,bottom:2,left:4,right:4}, borderWidth:0 }
+      }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    layout:{padding:{top:40,left:8,right:16,bottom:8}},
+    plugins:{ legend:legendLight },
+    scales:{
+      y:{ ...lightScales.y, max:35 },
+      x:{ ...lightScales.x }
+    }
+  }
+});
+
+// CHART 5: ATTRITION RATE
+new Chart(document.getElementById('chartAttrition'), {
+  type: 'line',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label:'Attrition Rate', data:[4.79,5.83,6.56], borderColor:C_BLACK, backgroundColor:'rgba(0,0,0,0.04)', pointBackgroundColor:C_BLACK, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, formatter:function(v){ return v+'%'; }, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'top'; }, anchor:'center', offset:8 }
+      },
+      { label:'Target (7%)', data:[7,7,7], borderColor:C_SKY, borderDash:[5,4], pointRadius:0, borderWidth:1.5, fill:false, datalabels:{display:false} }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    layout:{padding:{top:28,left:8,right:36,bottom:16}},
+    plugins:{ legend:legendLight },
+    scales:{
+      y:{ ...lightScales.y, min:3, max:10, ticks:{ ...lightScales.y.ticks, callback:function(v){ return v+'%'; } } },
+      x:{ ...lightScales.x }
+    }
+  }
+});
+
+// CHART 6: SALES PERFORMANCE ALL PRODUCTS
+new Chart(document.getElementById('chartSalesPerf'), {
+  type: 'line',
+  data: {
+    labels: LABELS,
+    datasets: [
+      { label:'Memberships', data:[11,22,28], borderColor:C_SKY, backgroundColor:C_SKYALPHA, pointBackgroundColor:C_SKY, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'bottom'; }, anchor:'center', offset:8 }
+      },
+      { label:'Intro Offers', data:[23,109,56], borderColor:C_BLACK, backgroundColor:'rgba(0,0,0,0.04)', pointBackgroundColor:C_BLACK, pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'top'; }, anchor:'center', offset:8 }
+      },
+      { label:'Packs', data:[37,35,46], borderColor:'#ccc', borderDash:[4,3], fill:false, pointBackgroundColor:'#bbb', pointRadius:4, pointHoverRadius:6, borderWidth:2, tension:0.3,
+        datalabels:{ ...pillLabel, align:function(ctx){ if(ctx.dataIndex===0)return'right'; if(ctx.dataIndex===2)return'left'; return'bottom'; }, anchor:'center', offset:8 }
+      }
+    ]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    layout:{padding:{top:28,left:8,right:36,bottom:16}},
+    plugins:{ legend:legendLight },
+    scales:{
+      y:{ ...lightScales.y, min:0, max:130 },
+      x:{ ...lightScales.x }
+    }
+  }
+});
+
+// SCROLL BEHAVIOUR
+window.addEventListener("scroll", function() {
+  var y = window.scrollY;
+  var btt = document.getElementById("btt");
+  if (y > 300) { btt.classList.add("visible"); } else { btt.classList.remove("visible"); }
+  var sections = ["s01","s02","s03","s04","s05","s06"];
+  var links = document.querySelectorAll(".sec-link");
+  var active = 0;
+  var atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 40;
+  if (atBottom) { active = sections.length - 1; }
+  else { sections.forEach(function(id,i){ var el=document.getElementById(id); if(el&&el.getBoundingClientRect().top<100)active=i; }); }
+  links.forEach(function(l,i){ l.classList.toggle("active",i===active); });
+});
+
+// WIDTH TOGGLE
+var fixedWidth = true;
+var contentArea = document.querySelector(".content-area");
+document.getElementById("widthToggle").addEventListener("click", function() {
+  fixedWidth = !fixedWidth;
+  if (fixedWidth) { contentArea.style.maxWidth="1200px"; this.classList.remove("fw"); }
+  else { contentArea.style.maxWidth="none"; this.classList.add("fw"); }
+});
+
+// EDIT MODE
+var store = {};
+function initStore() { document.querySelectorAll("[data-field]").forEach(function(el){ var key=el.getAttribute("data-field"); if(el.tagName==="UL"){store[key]=Array.from(el.querySelectorAll("li")).map(function(li){return li.innerHTML;});}else{store[key]=el.innerHTML;} }); }
+function renderStore() { document.querySelectorAll("[data-field]").forEach(function(el){ var key=el.getAttribute("data-field"); if(!(key in store))return; if(el.tagName==="UL"){el.innerHTML=store[key].map(function(item){return"<li>"+item+"</li>";}).join("");}else{el.innerHTML=store[key];} }); }
+var editUnlocked = false;
+function triggerEditMode() { if(editUnlocked){document.body.classList.remove("edit-mode");document.getElementById("editToggleBtn").classList.remove("active");editUnlocked=false;}else{document.getElementById("pwGate").classList.add("active");document.getElementById("pwInput").value="";document.getElementById("pwError").textContent="";setTimeout(function(){document.getElementById("pwInput").focus();},100);} }
+document.getElementById("pwSubmit").addEventListener("click",checkPassword);
+document.getElementById("pwCancel").addEventListener("click",function(){document.getElementById("pwGate").classList.remove("active");});
+document.getElementById("pwInput").addEventListener("keydown",function(e){if(e.key==="Enter")checkPassword();});
+function checkPassword(){var val=document.getElementById("pwInput").value;if(val==="Strong123*"){document.getElementById("pwGate").classList.remove("active");editUnlocked=true;document.body.classList.add("edit-mode");document.getElementById("editToggleBtn").classList.add("active");}else{document.getElementById("pwError").textContent="Incorrect password.";document.getElementById("pwInput").value="";document.getElementById("pwInput").focus();}}
+var currentFieldKey=null;
+var fieldConfig={};
+fieldConfig["exec-issues"]={type:"bullets",key:"exec-issues"};
+fieldConfig["exec-interventions"]={type:"bullets",key:"exec-interventions"};
+fieldConfig["exec-outcomes"]={type:"bullets",key:"exec-outcomes"};
+fieldConfig["mem-insight"]={type:"multi-para",fields:[{key:"mem-insight-p1",label:"Paragraph 1"},{key:"mem-insight-p2",label:"Paragraph 2"}]};
+fieldConfig["fin-insight"]={type:"multi-para",fields:[{key:"fin-insight-p1",label:"Paragraph 1"},{key:"fin-insight-p2",label:"Paragraph 2"}]};
+fieldConfig["att-insight"]={type:"multi-para",fields:[{key:"att-insight-p1",label:"Paragraph 1"},{key:"att-insight-p2",label:"Paragraph 2"}]};
+fieldConfig["sales-insight"]={type:"multi-para",fields:[{key:"sales-insight-p1",label:"Paragraph 1"},{key:"sales-insight-p2",label:"Paragraph 2"}]};
+fieldConfig["summary-insight"]={type:"multi-para",fields:[{key:"summary-insight-p1",label:"Paragraph 1"},{key:"summary-insight-p2",label:"Paragraph 2"}]};
+fieldConfig["mem-takeaways"]={type:"bullets",key:"mem-takeaways"};
+fieldConfig["fin-takeaways"]={type:"bullets",key:"fin-takeaways"};
+fieldConfig["att-takeaways"]={type:"bullets",key:"att-takeaways"};
+fieldConfig["sales-takeaways"]={type:"bullets",key:"sales-takeaways"};
+fieldConfig["summary-takeaways"]={type:"bullets",key:"summary-takeaways"};
+
+function openEditModal(fieldKey,sectionName,fieldName){if(!editUnlocked)return;currentFieldKey=fieldKey;var cfg=fieldConfig[fieldKey];document.getElementById("modalSectionLabel").textContent=sectionName;document.getElementById("modalTitle").textContent=fieldName;var body=document.getElementById("modalBody");body.innerHTML="";if(cfg.type==="bullets"){var bullets=store[cfg.key]||[];var wrapper=document.createElement("div");wrapper.className="modal-field";var lbl=document.createElement("label");lbl.className="field-label";lbl.textContent="Bullet points";wrapper.appendChild(lbl);var listEditor=document.createElement("div");listEditor.className="bullet-list-editor";listEditor.id="bulletEditor";bullets.forEach(function(item,i){listEditor.appendChild(makeBulletRow(item,i));});var addBtn=document.createElement("button");addBtn.className="add-bullet-btn";addBtn.textContent="+ Add bullet";addBtn.onclick=function(){var rows=listEditor.querySelectorAll(".bullet-row").length;listEditor.insertBefore(makeBulletRow("",rows),addBtn);};listEditor.appendChild(addBtn);wrapper.appendChild(listEditor);body.appendChild(wrapper);}else if(cfg.type==="multi-para"){cfg.fields.forEach(function(f){var wrapper=document.createElement("div");wrapper.className="modal-field";var lbl=document.createElement("label");lbl.className="field-label";lbl.textContent=f.label;var ta=document.createElement("textarea");ta.className="field-input";ta.rows=5;ta.setAttribute("data-para-key",f.key);ta.addEventListener("input",markDirty);var tmp=document.createElement("div");tmp.innerHTML=store[f.key]||"";ta.value=tmp.textContent||tmp.innerText||"";wrapper.appendChild(lbl);wrapper.appendChild(ta);body.appendChild(wrapper);});}document.getElementById("discardGate").style.display="none";document.getElementById("editOverlay").classList.add("active");}
+function makeBulletRow(content,index){var row=document.createElement("div");row.className="bullet-row";var tmp=document.createElement("div");tmp.innerHTML=content;var plainText=tmp.textContent||tmp.innerText||"";var ta=document.createElement("textarea");ta.className="bullet-input";ta.rows=2;ta.value=plainText;var removeBtn=document.createElement("button");removeBtn.className="bullet-remove";removeBtn.innerHTML="×";removeBtn.onclick=function(){row.remove();};row.appendChild(ta);row.appendChild(removeBtn);return row;}
+function saveModal(){var cfg=fieldConfig[currentFieldKey];if(cfg.type==="bullets"){var bullets=Array.from(document.querySelectorAll("#bulletEditor .bullet-input")).map(function(ta){return ta.value.trim();}).filter(function(v){return v.length>0;});store[cfg.key]=bullets;}else if(cfg.type==="multi-para"){cfg.fields.forEach(function(f){var ta=document.querySelector("[data-para-key=\""+f.key+"\"]");if(ta)store[f.key]=ta.value.trim();});}renderStore();closeModal();}
+function closeModal(){document.getElementById("editOverlay").classList.remove("active");document.getElementById("discardGate").style.display="none";currentFieldKey=null;document.getElementById("btnSave").classList.remove("pending");}
+function markDirty(){document.getElementById("btnSave").classList.add("pending");}
+function showDiscardGate(){document.getElementById("discardGate").style.display="block";}
+function hideDiscardGate(){document.getElementById("discardGate").style.display="none";}
+function discardAndClose(){document.getElementById("discardGate").style.display="none";closeModal();}
+document.getElementById("btnSave").addEventListener("click",saveModal);
+document.getElementById("btnCancel").addEventListener("click",function(){if(document.getElementById("btnSave").classList.contains("pending")){showDiscardGate();}else{closeModal();}});
+document.getElementById("modalClose").addEventListener("click",function(){if(document.getElementById("btnSave").classList.contains("pending")){showDiscardGate();}else{closeModal();}});
+document.getElementById("btnExport").addEventListener("click",function(){exportHTML();});
+function exportHTML(){var html=document.documentElement.outerHTML;var storeScript="<script id=\"saved-store\">var savedStore="+JSON.stringify(store)+";<\/script>";html=html.replace("</head>",storeScript+"</head>");var blob=new Blob([html],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=document.title.replace(/[^a-z0-9]/gi,"_")+".html";a.click();URL.revokeObjectURL(a.href);}
+document.addEventListener("DOMContentLoaded",function(){initStore();});
+</script>
+</body>
+</html>
