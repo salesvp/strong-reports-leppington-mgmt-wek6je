@@ -126,6 +126,53 @@ body { font-family: 'Montserrat', sans-serif; background: var(--gray-light); col
   .takeaways li { font-size: 12px; }
   .section-card-body p { font-size: 12px; line-height: 1.6; }
 }
+
+.edit-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+.edit-overlay.active { display: flex; }
+.edit-modal { background: var(--black); border: 1px solid #2a2a2a; border-top: 3px solid var(--sky); border-radius: 2px; width: 600px; max-width: 94vw; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; }
+.modal-head { padding: 16px 20px; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.modal-head-title { font-family: 'Kessel Heavy', sans-serif; font-size: 14px; letter-spacing: 2px; color: var(--sky); text-transform: uppercase; }
+.modal-section-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #555; }
+.modal-close { width: 28px; height: 28px; background: none; border: 1px solid #333; border-radius: 2px; color: #666; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition); flex-shrink: 0; }
+.modal-close:hover { border-color: var(--sky); color: var(--sky); }
+.modal-body { padding: 20px; overflow-y: auto; flex: 1; }
+.modal-field { margin-bottom: 16px; } .modal-field:last-child { margin-bottom: 0; }
+.field-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #666; margin-bottom: 6px; display: block; }
+.field-input { width: 100%; background: #111; border: 1px solid #2a2a2a; border-radius: 2px; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6; padding: 10px 12px; resize: vertical; transition: border-color var(--transition); }
+.field-input:focus { outline: none; border-color: var(--sky); }
+.bullet-list-editor { display: flex; flex-direction: column; gap: 6px; }
+.bullet-row { display: flex; gap: 6px; align-items: flex-start; }
+.bullet-input { flex: 1; background: #111; border: 1px solid #2a2a2a; border-radius: 2px; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6; padding: 8px 10px; resize: vertical; transition: border-color var(--transition); }
+.bullet-input:focus { outline: none; border-color: var(--sky); }
+.bullet-remove { width: 28px; height: 34px; flex-shrink: 0; background: none; border: 1px solid #2a2a2a; border-radius: 2px; color: #555; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition); font-size: 16px; margin-top: 1px; }
+.bullet-remove:hover { border-color: var(--danger-acc); color: var(--danger-acc); }
+.add-bullet-btn { background: none; border: 1px dashed #333; border-radius: 2px; color: #555; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 7px; cursor: pointer; transition: all var(--transition); width: 100%; }
+.add-bullet-btn:hover { border-color: var(--sky); color: var(--sky); }
+.modal-foot { padding: 14px 20px; border-top: 1px solid #1a1a1a; display: flex; gap: 8px; justify-content: flex-end; flex-shrink: 0; }
+.btn { padding: 8px 18px; border-radius: 2px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all var(--transition); border: 1px solid transparent; }
+.btn-cancel { background: none; border-color: #333; color: #666; } .btn-cancel:hover { border-color: #555; color: #aaa; }
+.btn-save { background: var(--sky); border-color: var(--sky); color: var(--black); transition: all var(--transition); } .btn-save:hover { background: #6bb8d4; border-color: #6bb8d4; }
+.btn-save.pending { background: var(--warning-acc); border-color: var(--warning-acc); color: var(--black); } .btn-save.pending:hover { background: #e08c00; border-color: #e08c00; }
+.btn-export { background: none; border-color: rgba(135,206,235,0.3); color: var(--sky); margin-right: auto; } .btn-export:hover { background: rgba(135,206,235,0.07); }
+.pw-gate { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+.pw-gate.active { display: flex; }
+.pw-box { background: var(--black); border: 1px solid #2a2a2a; border-top: 3px solid var(--sky); border-radius: 2px; padding: 32px; width: 360px; max-width: 94vw; text-align: center; }
+.pw-title { font-family: 'Kessel Heavy', sans-serif; font-size: 16px; letter-spacing: 3px; color: var(--sky); text-transform: uppercase; margin-bottom: 8px; }
+.pw-sub { font-size: 11px; color: #555; letter-spacing: 1px; margin-bottom: 24px; }
+.pw-input { width: 100%; background: #111; border: 1px solid #2a2a2a; border-radius: 2px; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 14px; padding: 11px 14px; text-align: center; letter-spacing: 3px; margin-bottom: 12px; transition: border-color var(--transition); }
+.pw-input:focus { outline: none; border-color: var(--sky); }
+.pw-error { font-size: 11px; color: var(--danger-acc); margin-bottom: 12px; min-height: 16px; }
+.pw-submit { width: 100%; background: var(--sky); border: none; border-radius: 2px; color: var(--black); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 11px; cursor: pointer; transition: all var(--transition); }
+.pw-submit:hover { background: #6bb8d4; }
+.pw-cancel { width: 100%; background: none; border: 1px solid #2a2a2a; border-radius: 2px; color: #555; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 9px; cursor: pointer; margin-top: 8px; transition: all var(--transition); }
+.pw-cancel:hover { border-color: #555; color: #888; }
+.edit-trigger { display: none; width: 24px; height: 24px; flex-shrink: 0; background: rgba(135,206,235,0.08); border: 1px solid rgba(135,206,235,0.2); border-radius: 2px; cursor: pointer; align-items: center; justify-content: center; transition: all var(--transition); }
+.edit-trigger:hover { background: rgba(135,206,235,0.18); border-color: var(--sky); }
+.edit-trigger svg { width: 11px; height: 11px; color: var(--sky); }
+body.edit-mode .edit-trigger { display: flex; }
+body.edit-mode .section-card { outline: 1px dashed rgba(135,206,235,0.15); }
+.edit-banner { display: none; position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--sky); color: var(--black); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px; border-radius: 20px; z-index: 700; white-space: nowrap; }
+body.edit-mode .edit-banner { display: block; }
 </style>
 </head>
 <body>
